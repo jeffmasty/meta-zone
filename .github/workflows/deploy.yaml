@@ -5,42 +5,29 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read	steps:
-	  - name: Checkout meta-zone (main repo)
-	    uses: actions/checkout@v4
-	    with:
-	      path: meta-zone
-
-	  - name: Checkout zone-core (sibling)
-	    uses: actions/checkout@v4
-	    with:
-	      repository: jeffmasty/zone-core
-	      path: zone-core
-
-	  - name: Checkout zone-scope (sibling)
-	    uses: actions/checkout@v4
-	    with:
-	      repository: jeffmasty/zone-scope
-	      path: zone-scope
-
-	  - name: Set up JDK 21 and configure Maven credentials
-	    uses: actions/setup-java@v4
-	    with:
-	      distribution: 'temurin'
-	      java-version: '21'
-	      server-id: github
-	      server-username: GITHUB_ACTOR
-	      server-password: ${{ secrets.GITHUB_TOKEN }}
-
-	  - name: Build and deploy (reactor)
-	    run: mvn -B -DskipTests -f meta-zone/pom.xml clean deploy
+  contents: read
   packages: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout meta-zone (main repo)
+        uses: actions/checkout@v4
+        with:
+          path: meta-zone
+
+      - name: Checkout zone-core (sibling)
+        uses: actions/checkout@v4
+        with:
+          repository: jeffmasty/zone-core
+          path: zone-core
+
+      - name: Checkout zone-scope (sibling)
+        uses: actions/checkout@v4
+        with:
+          repository: jeffmasty/zone-scope
+          path: zone-scope
 
       - name: Set up JDK 21 and configure Maven credentials
         uses: actions/setup-java@v4
@@ -51,5 +38,10 @@ jobs:
           server-username: GITHUB_ACTOR
           server-password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and deploy
+      # Option A: build & deploy the full reactor (requires siblings checked out as above)
+      - name: Build and deploy (reactor)
         run: mvn -B -DskipTests -f meta-zone/pom.xml clean deploy
+
+      # Option B (recommended if you only need to publish the parent):
+      # - name: Deploy parent only
+      #   run: mvn -N -B -DskipTests -f meta-zone/pom.xml deploy

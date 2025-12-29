@@ -1,0 +1,108 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>net.judahzone</groupId>
+  <artifactId>meta-zone</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>JudahZone-Aggregator</name>
+
+  <modules>
+    <module>../zone-core</module>
+    <module>../zone-scope</module>
+  </modules>
+
+  <properties>
+    <java.version>21</java.version>
+  	<maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <lombok.version>1.18.34</lombok.version>
+    <log4j2.version>2.20.0</log4j2.version>
+    <jackson.version>2.19.2</jackson.version>
+    <junit.version>5.10.2</junit.version>
+    <tarsos.version>2.5</tarsos.version>
+    <osc.version>0.7</osc.version>  <!--OSCPortOut-->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+   <repositories>
+     <!-- Tarsos audio library -->
+     <repository> 
+       <id>be.0110.repo-releases</id> 
+       <name>0110.be repository</name>
+       <url>https://mvn.0110.be/releases</url>
+     </repository>
+   </repositories>
+
+<dependencyManagement>
+  <dependencies>
+  
+	<dependency>
+	  <groupId>org.apache.logging.log4j</groupId>
+	  <artifactId>log4j-1.2-api</artifactId>
+	  <version>${log4j2.version}</version>
+	</dependency>
+      
+	<!-- Lombok annotation processor -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+    </dependency>
+    
+    <!-- JUnit -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JSON -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    
+    <!-- OSC Open Sound Control -->
+    <dependency>
+      <groupId>com.illposed.osc</groupId>
+      <artifactId>javaosc-core</artifactId>
+      <version>${osc.version}</version>
+    </dependency>
+    
+    <!-- Tarsos Audio Library -->
+    <dependency>
+      <groupId>be.tarsos.dsp</groupId>
+      <artifactId>core</artifactId>
+      <version>${tarsos.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>be.tarsos.dsp</groupId>
+      <artifactId>jvm</artifactId>
+      <version>${tarsos.version}</version>
+    </dependency>
+    
+    <!-- Jack Support -->
+    <dependency>
+      <groupId>net.java.dev.jna</groupId>
+      <artifactId>jna</artifactId>
+      <version>[5.0.0,6.0)</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jaudiolibs</groupId>
+      <artifactId>jnajack</artifactId>
+      <version>1.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jaudiolibs</groupId>
+      <artifactId>audioservers-api</artifactId>
+      <version>2.0.0</version>
+    </dependency>
+    
+  </dependencies>
+</dependencyManagement>
+</project>

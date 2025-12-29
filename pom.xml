@@ -12,6 +12,7 @@
   <modules>
     <module>../zone-core</module>
     <module>../zone-scope</module>
+    <module>../zone-gui</module>
   </modules>
 
 <distributionManagement>

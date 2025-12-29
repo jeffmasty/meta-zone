@@ -1,6 +1,17 @@
 TODO 
 
+new project: 
+Github repo
+checkout ssh
+maven
+pom
+parent pom
+
+
+
 deploy:
 .github/workflows/deploy.yml
+
+
 
 

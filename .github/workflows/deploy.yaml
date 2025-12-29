@@ -23,11 +23,11 @@ jobs:
           repository: jeffmasty/zone-core
           path: zone-core
 
-	  - name: Checkout zone-gui (sibling)
-	    uses: actions/checkout@v4
-	    with:
-	      repository: jeffmasty/zone-gui
-	      path: zone-gui
+      - name: Checkout zone-gui (sibling)
+        uses: actions/checkout@v4
+        with:
+          repository: jeffmasty/zone-gui
+          path: zone-gui
 
       - name: Checkout zone-scope (sibling)
         uses: actions/checkout@v4

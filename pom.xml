@@ -5,7 +5,7 @@
 
   <groupId>net.judahzone</groupId>
   <artifactId>meta-zone</artifactId>
-  <version>0.2-SNAPSHOT</version>
+  <version>0.3-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>JudahZone-Aggregator</name>
 
@@ -17,6 +17,7 @@
     <module>../zone-jnajack</module>
     <module>../zone-scope</module>
     <module>../zone-test</module>
+    <module>../JudahZone</module>
   </modules>
 
 <distributionManagement>
@@ -37,7 +38,7 @@
   	<maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <lombok.version>1.18.34</lombok.version>
-    <log4j2.version>2.25.3</log4j2.version>
+    <log4j2.version>2.20.0</log4j2.version> <!-- >2.25.3< -->
     <jackson.version>2.19.2</jackson.version>
     <junit.version>5.10.2</junit.version>
     <tarsos.version>2.5</tarsos.version>
